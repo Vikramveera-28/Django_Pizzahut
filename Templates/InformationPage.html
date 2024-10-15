@@ -1,0 +1,39 @@
+{% extends 'Base.html' %}
+{% block body %}
+<style>
+    .center-box{
+         height: 20rem;
+         width: 60rem;
+    }
+</style>
+    <div class="position-absolute top-50 start-50 translate-middle center-box table-responsive ">
+        <table class="table table-hover table-striped">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Item</th>
+                    <th>Size</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for data in information %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.phone }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.item }}</td>
+                    <td>{{ data.size }}</td>
+                    <td><a href="{% url 'edit' data.id %}" class="btn btn-primary w-100 p-0 px-1">Edit</a></td>
+                    <td><a href="{% url 'delete' data.id %}" class="btn btn-danger w-100 p-0 px-1">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
